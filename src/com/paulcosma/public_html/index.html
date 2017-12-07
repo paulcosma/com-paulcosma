@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <input type="email" class="form-control" name="EMAIL" id="exampleInputEmail1" placeholder="Enter your email address">
                         </div>
-                        <input type="submit" name="subscribe" value="Get notified!" class="btn btn-theme">
+                        <input type="submit" name="subscribe" value="Get notified!" class="btn btn-theme" onclick="return continueOrNot()">
                     </form>
                     <br/>
                 </div>
@@ -112,6 +112,7 @@ $(document).ready( function () {
     }
 });
 
+//
 function appendResult(userText , className, iconClass){
   var resultHTML = "<div class='stretchLeft result "+ className + "'>" + userText + " <span class='fa fa-" + iconClass + "'></span>" + "</div>";
   $('body').append(resultHTML);
@@ -137,6 +138,19 @@ function register($form) {
             }
         }
     });
+}
+
+// test email  for format and invalid characters
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+// method will be called when "Get notified!" button is clicked. onclick="return continueOrNot()"
+function continueOrNot() {
+    if(validateEmail(document.getElementById('exampleInputEmail1').value)){
+        alert('Valid email'); return true;
+    }else{ alert("Email not valid"); return false;}
 }
     </script>
 
