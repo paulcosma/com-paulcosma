@@ -87,6 +87,10 @@
                 <div class="col-lg-6 col-lg-offset-3">
                     <p class="copyright">Powered by <i class="fa fa-love"></i><a href="http://getbootstrap.com" target="_blank" >Bootstrap</a>
                     </p>
+                    <p id="testRandomSite"><a href="#" onclick="randomSite();" target="_blank" style="color:black">Test branch </a>
+                    </p>
+                    <p hidden id="hiddenFooter">Hidden footer
+                    </p>
                 </div>
             </div>
         </div>
@@ -150,6 +154,16 @@ function continueOrNot() {
         alert('Valid email. Thank you!'); return true;
     }else{ alert("Email not valid"); return false;}
 }
+
+// generate random social link through javascript
+var sites = [
+        'http://www.facebook.com',
+        'http://www.linkedin.com',
+    ];
+    function randomSite() {
+        var i = parseInt(Math.random() * sites.length);
+        location.href = sites[i];
+    }
     </script>
 
 </body>
