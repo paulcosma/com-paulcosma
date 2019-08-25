@@ -92,6 +92,22 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     name = "telegram"
     url = "https://t.me/paulcosma"
 
+  [[params.personal]]
+      name = "facebook"
+      url = "https://t.me/paulcosma"
+
+  [[params.personal]]
+      name = "email"
+      url = "https://t.me/paulcosma"
+
+  [[params.personal]]
+      name = "telegram"
+      url = "https://t.me/paulcosma"
+
+  [[params.personal]]
+      name = "instagram"
+      url = "https://t.me/paulcosma"
+
 [menu]
 
   [[menu.main]]
