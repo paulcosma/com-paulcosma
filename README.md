@@ -1,5 +1,11 @@
 # paulcosma.com
 
+Windows Install
+```
+choco install hugo-extended
+choco upgrade hugo-extended
+```
+
 Generate a new site
 ```
 hugo new site paulcosma.com
@@ -30,3 +36,6 @@ To create a new post, run
 ```
 hugo new posts/post-title.md
 ```
+
+SVG Icons
+https://iconify.design/icon-sets/?query=angular
