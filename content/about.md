@@ -1,17 +1,11 @@
 +++
-title = "About"
+title = "about me"
 date = "2019"
 +++
 
-Hugo is the **world’s fastest framework for building websites**. It is written in Go.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software Engineer with test Automation development experience, using various programming languages and technologies, as well as extensive experience in DevOps, Performance testing and defects reporting procedures and techniques.
 
-It makes use of a variety of open source projects including:
+You can write me at ![email address image](https://paulcosma.com/public/email-address-image.png) 
 
-* https://github.com/russross/blackfriday
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+or have my CV [here] (https://paulcosma.com/public/paul-cosma-cv.pdf).
 

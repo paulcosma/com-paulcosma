@@ -1,7 +1,7 @@
 baseURL = "https://paulcosma.com"
 languageCode = "en-us"
 defaultContentLanguage = "en"
-title = "Hello"
+title = "home"
 theme = "hermit"
 # enableGitInfo = true
 pygmentsCodefences  = true
@@ -93,28 +93,44 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     url = "https://t.me/paulcosma"
 
   [[params.personal]]
+    name = "mail"
+    url = "https://mail.paulcosma.com"
+
+  [[params.personal]]
+    name = "pve"
+    url = "https://pve.paulcosma.com"
+
+  [[params.personal]]
+    name = "jenkins"
+    url = "https://jenkins.paulcosma.com"
+
+  [[params.personal]]
     name = "plex"
     url = "https://plex.paulcosma.com"
 
   [[params.personal]]
-      name = "jenkins"
-      url = "https://jenkins.paulcosma.com"
+    name = "transmission"
+    url = "https://torrent.paulcosma.com"
 
   [[params.personal]]
-    name = "plex2"
-    url = "https://plex.paulcosma.com"
+    name = "cloud"
+    url = "https://cloud.paulcosma.com"
 
   [[params.personal]]
-      name = "jenkins2"
-      url = "https://jenkins.paulcosma.com"
+    name = "grafana"
+    url = "https://monitoring.paulcosma.com"
 
   [[params.personal]]
-      name = "torrent"
-      url = "https://jenkins.paulcosma.com"
+    name = "calculator"
+    url = "https://calculator.paulcosma.com"
+
+  [[params.personal]]
+    name = "angular"
+    url = "https://angular.paulcosma.com"
 
 [menu]
 
   [[menu.main]]
-    name = "About"
+    name = "about me"
     url = "about/"
     weight = 20
