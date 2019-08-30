@@ -3,4 +3,4 @@
 	url = https://github.com/Track3/hermit.git
 [submodule "themes/hermit"]
 	path = themes/hermit
-	url = git@github.com:paulcosma/hermit.git
+	url = https://github.com/paulcosma/hermit.git
