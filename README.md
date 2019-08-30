@@ -13,7 +13,7 @@ hugo new site paulcosma.com
 
 Download a theme 
 ```
-git submodule add https://github.com/Track3/hermit.git themes/hermit
+git submodule add https://github.com/paulcosma/hermit.git themes/hermit
 ```
 
 Add some content. You can add single files with 
