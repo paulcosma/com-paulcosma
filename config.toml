@@ -94,7 +94,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   [[params.personal]]
     name = "mail"
-    url = "https://mail.paulcosma.com"
+    url = "https://mail.paulcosma.com/SOGo"
 
   [[params.personal]]
     name = "pve"
