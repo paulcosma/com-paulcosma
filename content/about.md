@@ -7,5 +7,5 @@ date = "2019"
 
 You can write me at ![email address image](https://paulcosma.com/public/email-address-image.png) 
 
-or have my CV [here] (https://paulcosma.com/public/paul-cosma-cv.pdf).
+or download my CV [here] (https://paulcosma.com/public/paul-cosma-cv.pdf).
 
