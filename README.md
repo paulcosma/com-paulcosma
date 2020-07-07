@@ -42,8 +42,8 @@ https://iconify.design/icon-sets/?query=angular
 
 Clone with submodules:
 ```
-git clone git@home-github.com:paulcosma/com.paulcosma.git
-cd com.paulcosma
+git clone git@home-github.com:paulcosma/com-paulcosma.git
+cd com-paulcosma
 git submodule update --init --recursive
 ```
 

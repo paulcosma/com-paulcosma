@@ -12,9 +12,9 @@ WORKDIR /src/hugo
 RUN go install --tags extended
 
 # Generate website to the public directory
-RUN git clone --recurse-submodule --single-branch --branch master https://github.com/paulcosma/com.paulcosma.git
-#COPY ./ /src/hugo/com.paulcosma
-WORKDIR /src/hugo/com.paulcosma
+RUN git clone --recurse-submodule --single-branch --branch master https://github.com/paulcosma/com-paulcosma.git
+#COPY ./ /src/hugo/com-paulcosma
+WORKDIR /src/hugo/com-paulcosma
 RUN hugo
 
 # Add static website to webserver
@@ -23,7 +23,7 @@ RUN hugo
 FROM nginx:alpine
 
 # Copy build files from builder.
-COPY --from=builder /src/hugo/com.paulcosma/public /usr/share/nginx/html/
+COPY --from=builder /src/hugo/com-paulcosma/public /usr/share/nginx/html/
 
 # Expose ports
 EXPOSE 80
