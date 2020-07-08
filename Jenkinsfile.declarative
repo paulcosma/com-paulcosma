@@ -8,9 +8,9 @@ pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '3'))
   }
-  triggers {
-    cron('@weekly')
-  }
+//  triggers {
+//    cron('@weekly')
+//  }
   stages {
     stage('Gitlab Docker registry login') {
       steps {

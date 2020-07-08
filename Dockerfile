@@ -7,7 +7,6 @@
 ARG GOLAN_VERSION=1.13.12-buster
 ARG NGINX_VERSION=1.19.0-alpine
 FROM golang:${GOLAN_VERSION} as builder
-RUN go version
 
 # Install Hugo from source
 # https://github.com/gohugoio/hugo/tags
@@ -18,16 +17,13 @@ WORKDIR /src
 RUN git clone https://github.com/gohugoio/hugo.git --branch ${HUGO_VERSION} --single-branch
 WORKDIR /src/hugo
 RUN go install --tags extended
-RUN hugo version
 
 # Generate website to the public directory
 #RUN git clone --recurse-submodule --single-branch --branch master https://github.com/paulcosma/com-paulcosma.git
 COPY ./ /src/hugo/com-paulcosma
 WORKDIR /src/hugo/com-paulcosma
-RUN ls -alh
 RUN git submodule add https://github.com/Track3/hermit.git themes/hermit
 RUN git submodule update --recursive
-RUN ls -alh themes/hermit
 RUN hugo
 
 #

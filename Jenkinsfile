@@ -8,7 +8,7 @@ node("master") {
     def GIT_TAG = gitTagName()
     properties([
         buildDiscarder(logRotator(daysToKeepStr: '14', numToKeepStr: '3')),
-        pipelineTriggers([cron('@weekly')]),
+//        pipelineTriggers([cron('@weekly')]),
     ])
     stage('DockerHub registry login') {
       withCredentials([usernamePassword(credentialsId: '052cba25-f00d-4ff2-b593-4e143b90515a', usernameVariable: 'dockerhub_user', passwordVariable: 'dockerhub_password')]) {
@@ -16,8 +16,6 @@ node("master") {
       }
     }
     stage('Build image') {
-      sh "ls -alh"
-      sh "ls -alh themes/hermit/"
       sh "docker image build -f Dockerfile -t paulcosma/com-paulcosma:${GIT_TAG} ."
     }
     stage('Tag image as latest') {
