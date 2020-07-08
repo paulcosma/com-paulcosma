@@ -12,8 +12,8 @@ WORKDIR /src/hugo
 RUN go install --tags extended
 
 # Generate website to the public directory
-RUN git clone --recurse-submodule --single-branch --branch master https://github.com/paulcosma/com-paulcosma.git
-#COPY ./ /src/hugo/com-paulcosma
+#RUN git clone --recurse-submodule --single-branch --branch master https://github.com/paulcosma/com-paulcosma.git
+COPY ./ /src/hugo/com-paulcosma
 WORKDIR /src/hugo/com-paulcosma
 RUN hugo
 

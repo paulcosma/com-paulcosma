@@ -16,6 +16,7 @@ node("master") {
       }
     }
     stage('Build image') {
+      sh "ls -alh"
       sh "docker image build -f Dockerfile -t paulcosma/com-paulcosma:${GIT_TAG} ."
     }
     stage('Tag image as latest') {
