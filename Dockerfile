@@ -22,8 +22,9 @@ RUN hugo version
 #RUN git clone --recurse-submodule --single-branch --branch master https://github.com/paulcosma/com-paulcosma.git
 COPY ./ /src/hugo/com-paulcosma
 WORKDIR /src/hugo/com-paulcosma
-RUN git submodule update --init --recursive
 RUN ls -alh
+RUN git submodule update --init --recursive
+RUN git submodule update --recursive
 RUN ls -alh themes/hermit
 RUN hugo
 
