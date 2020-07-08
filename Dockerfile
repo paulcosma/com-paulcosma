@@ -8,12 +8,12 @@ ARG  GOLAN_VERSION=1.13.12-buster
 FROM golang:${GOLAN_VERSION} as builder
 
 # Install Hugo from source
-# https://github.com/gohugoio/hugo/milestones?state=closed
-ARG HUGO_VERSION=v0.73
+# https://github.com/gohugoio/hugo/tags
+ARG HUGO_VERSION=v0.73.0
 RUN apt-get update && apt-get install git
 RUN git version
 WORKDIR /src
-RUN git clone --branch ${HUGO_VERSION} https://github.com/gohugoio/hugo.git
+RUN git clone https://github.com/gohugoio/hugo.git --branch ${HUGO_VERSION} --single-branch
 WORKDIR /src/hugo
 RUN go install --tags extended
 RUN hugo version
