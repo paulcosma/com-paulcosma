@@ -1,0 +1,65 @@
+// Declarative pipeline
+pipeline {
+  agent { label 'master' }
+  environment {
+    GIT_TAG = gitTagName()
+    IMAGE_TAG = "${GIT_TAG}"
+  }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '3'))
+  }
+  triggers {
+    cron('@weekly')
+  }
+  stages {
+    stage('Gitlab Docker registry login') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: '052cba25-f00d-4ff2-b593-4e143b90515a', usernameVariable: 'dockerhub_user', passwordVariable: 'dockerhub_password')]) {
+          sh "docker login -u ${dockerhub_user} -p ${dockerhub_password}"
+        }
+      }
+    }
+    stage('Build image') {
+      steps {
+        sh "docker image build -f Dockerfile -t paulcosma/com-paulcosma:${IMAGE_TAG} ."
+      }
+    }
+    stage('Tag image as latest') {
+      steps {
+        sh "docker image tag paulcosma/com-paulcosma:${IMAGE_TAG} paulcosma/com-paulcosma:latest"
+      }
+    }
+    stage('Push image') {
+      steps {
+        sh "docker image push paulcosma/com-paulcosma:${IMAGE_TAG}"
+        sh "docker image push paulcosma/com-paulcosma:latest"
+      }
+    }
+    stage('Start deployments') {
+      steps {
+        parallel(
+            websites: {
+              build job: 'DEPLOY-websites-stack'
+            },
+            apps: {
+              build job: 'DEPLOY-apps-stack'
+            }
+        )
+      }
+    }
+  }
+}
+
+String gitTagName() {
+  commit = getLatestTaggedCommit()
+  sh "echo Debug: commit = $commit"
+  if (commit) {
+    desc = sh(script: "git describe --tags ${commit}", returnStdout: true)?.trim()
+    sh "echo Debug: Tag = $desc"
+  }
+  return desc
+}
+
+String getLatestTaggedCommit() {
+  return sh(script: 'git rev-list --tags --max-count=1', returnStdout: true)?.trim()
+}

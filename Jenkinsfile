@@ -1,7 +1,10 @@
 #!groovy
+// Scripted pipeline
 
 node("master") {
   timestamps {
+    git branch: 'master',
+        url: 'https://github.com/paulcosma/com-paulcosma.git'
     def GIT_TAG = gitTagName()
     properties([
         buildDiscarder(logRotator(daysToKeepStr: '14', numToKeepStr: '3')),
