@@ -16,6 +16,8 @@ RUN go install --tags extended
 COPY ./ /src/hugo/com-paulcosma
 WORKDIR /src/hugo/com-paulcosma
 RUN git submodule update --init --recursive
+RUN ls -alh
+RUN ls -alh themes/hermit
 RUN hugo
 
 # Add static website to webserver
