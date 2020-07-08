@@ -18,7 +18,7 @@ node("master") {
     stage('Build image') {
       sh "ls -alh"
       sh "ls -alh themes/hermit/"
-      sh "docker image build --no-cache -f Dockerfile -t paulcosma/com-paulcosma:${GIT_TAG} ."
+      sh "docker image build -f Dockerfile -t paulcosma/com-paulcosma:${GIT_TAG} ."
     }
     stage('Tag image as latest') {
       sh "docker image tag paulcosma/com-paulcosma:${GIT_TAG} paulcosma/com-paulcosma:latest"

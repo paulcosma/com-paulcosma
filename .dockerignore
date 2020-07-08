@@ -2,3 +2,8 @@
 .idea/
 README.md
 Jenkinsfile*
+# Ignore git submodules and submodules folder.
+# This is need because `git submodule update --init --recursive` does not work properly in container if we copy the files.
+# We need to use instead `git submodule add https://github.com/Track3/hermit.git` themes/hermit
+.gitmodules
+themes/
