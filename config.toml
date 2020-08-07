@@ -102,11 +102,11 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   [[params.personal]]
     name = "grafana"
-    url = "https://monitoring.paulcosma.com"
+    url = "https://grafana.paulcosma.com"
 
   [[params.personal]]
-    name = "grafana2"
-    url = "https://monitoring2.paulcosma.com"
+    name = "monitoring"
+    url = "https://monitoring.paulcosma.com"
 
   [[params.personal]]
     name = "pve"
@@ -161,8 +161,8 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     url = "https://torrent.paulcosma.com"
 
   [[params.personal]]
-    name = "transmission2"
-    url = "https://torrent2.paulcosma.com"
+    name = "download"
+    url = "https://download.paulcosma.com"
 
   [[params.personal]]
     name = "calculator"

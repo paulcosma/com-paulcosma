@@ -7,3 +7,4 @@ Jenkinsfile*
 # We need to use instead `git submodule add https://github.com/Track3/hermit.git` themes/hermit
 .gitmodules
 themes/
+content/logo/originals
