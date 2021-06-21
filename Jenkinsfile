@@ -27,11 +27,8 @@ node("master") {
     }
     stage('Start deployments') {
       parallel(
-          websites: {
-            build job: 'DEPLOY-websites-stack'
-          },
-          apps: {
-            build job: 'DEPLOY-apps-stack'
+          docker_apps: {
+            build job: 'DEPLOY-docker-apps'
           }
       )
     }
