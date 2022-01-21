@@ -94,7 +94,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   [[params.personal]]
     name = "mail"
-    url = "https://mail.paulcosma.com"
+    url = "https://mail.cxpcloud.com"
 
   [[params.personal]]
     name = "plex"
@@ -150,7 +150,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   [[params.personal]]
     name = "webmail"
-    url = "https://webmail.paulcosma.com"
+    url = "https://webmail.cxpcloud.com"
 
   [[params.personal]]
     name = "jenkins"
@@ -171,6 +171,10 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   [[params.personal]]
     name = "pihole"
     url = "https://pihole.paulcosma.com"
+
+  [[params.personal]]
+    name = "jellyfin"
+    url = "https://tv.cxpcloud.com"
 
 [menu]
 
