@@ -125,8 +125,8 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     url = "https://haproxy.paulcosma.com"
 
   [[params.personal]]
-    name = "cloud"
-    url = "https://cloud.paulcosma.com"
+    name = "storage"
+    url = "https://storage.cxpcloud.com"
 
   [[params.personal]]
     name = "home"
