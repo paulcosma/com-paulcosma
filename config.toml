@@ -94,7 +94,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   [[params.personal]]
     name = "mail"
-    url = "https://mail.cxpcloud.com"
+    url = "https://mail.softaz.com"
 
   [[params.personal]]
     name = "plex"
@@ -102,7 +102,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   [[params.personal]]
     name = "grafana"
-    url = "https://grafana.paulcosma.com"
+    url = "https://grafana.softaz.com"
 
   [[params.personal]]
     name = "monitoring"
@@ -150,7 +150,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   [[params.personal]]
     name = "webmail"
-    url = "https://webmail.cxpcloud.com"
+    url = "https://webmail.softaz.com"
 
   [[params.personal]]
     name = "jenkins"
@@ -170,11 +170,11 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   [[params.personal]]
     name = "pihole"
-    url = "https://pihole.paulcosma.com"
+    url = "https://pihole.softaz.com"
 
   [[params.personal]]
     name = "jellyfin"
-    url = "https://tv.cxpcloud.com"
+    url = "https://tv.softaz.com"
 
 [menu]
 
