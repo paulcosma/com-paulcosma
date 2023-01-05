@@ -8,5 +8,4 @@ date = "2021"
 <br>
 You can reach me at ![email address image](https://paulcosma.com/public/email-address-image.png) 
 
-or download my CV [here](https://paulcosma.com/public/paul-cosma-cv.pdf).
-
+or download my CV [here](https://paulcosma.com/public/Paul-Cosma-CV.pdf).
