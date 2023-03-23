@@ -45,6 +45,9 @@ Keep your blog posts in the content/posts folder.<br>
 To create a new post, run
 ```bash
 hugo new posts/post-title.md
+# By default, the posts that are being created in your content folder have draft set as true. Hugo will not show these as web pages by default. Start hugo locally with --buildDrafts
+hugo server -D
+# Replace `true` with `false` for draft when you need your post to be visible.
 ```
 
 SVG Icons <br>
@@ -59,3 +62,6 @@ git submodule update --init --recursive
 
 Generate Images:
 https://www.generateit.net/email-to-image/index.php
+
+Docs:
+https://gohugo.io/content-management/organization/

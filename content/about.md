@@ -1,6 +1,5 @@
 +++
 title = "about me"
-date = "2021"
 +++
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software Engineer with IT operations and software development experience, using various programming languages and technologies, as well as extensive experience in Automation and Performance testing.

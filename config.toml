@@ -21,6 +21,31 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   # noreferrerLinks = true
   # nofollowLinks = true
 
+# https://gohugo.io/getting-started/configuration-markup/#goldmark
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      linkifyProtocol = 'https'
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = 'github'
+      wrapStandAloneImageWithinParagraph = true
+      [markup.goldmark.parser.attribute]
+        block = false
+        title = true
+    [markup.goldmark.renderer]
+      hardWraps = true
+      unsafe = false
+      xhtml = false
+
+
 [taxonomies]
   tag = "tags"
   # Categories are disabled by default.
@@ -177,6 +202,11 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     url = "https://tv.softaz.com"
 
 [menu]
+
+  [[menu.main]]
+    name = "posts"
+    url = "posts/"
+    weight = 30
 
   [[menu.main]]
     name = "about me"
