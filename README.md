@@ -14,7 +14,14 @@ sudo snap install hugo --channel=extended
 sudo apt-get install hugo
 # Arch
 sudo pacman -Syu hugo
-```
+# From source https://gohugo.io/installation/linux/
+wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+go install -tags extended github.com/gohugoio/hugo@latest
+hugo version
+export PATH=$PATH:/root/go/bin/
 
 Generate a new site
 ```bash
@@ -34,6 +41,9 @@ hugo new <SECTIONNAME>\<FILENAME>.<FORMAT>
 Start the built-in live server via
 ```bash
 hugo server
+# start and access hugo on a remote server
+hugo server --bind=10.2.48.1 --baseURL=http://10.2.48.1:1313
+hugo server --bind=10.2.48.1 --baseURL=http://10.2.48.1:1313 -D
 ```
 
 Keep your regular pages in the content folder.<br>
