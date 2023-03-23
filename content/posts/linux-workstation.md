@@ -1,6 +1,6 @@
 ---
 title: "Linux Dual Boot Workstation Setup"
-date: 2023-03-23T15:28:46+02:00
+date: 2023-03-23T21:28:46+02:00
 draft: false
 toc: true
 images:
