@@ -11,6 +11,7 @@ tags:
   - encrypted
   - dual-boot
 ---
+Dual Boot Arch Linux and Windows 11 with encryption.
 # Laptop
 
 My laptop is a TUXEDO InfinityBook Pro 16 - Gen7 - Workstation Edition

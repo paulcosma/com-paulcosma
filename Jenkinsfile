@@ -10,6 +10,9 @@ node("master") {
         buildDiscarder(logRotator(daysToKeepStr: '14', numToKeepStr: '3')),
 //        pipelineTriggers([cron('@weekly')]),
     ])
+    stage('CheckOut code from git tag') {
+      checkout([$class: 'GitSCM', branches: [[name: "refs/tags/${GIT_TAG}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: false, recursiveSubmodules: false, reference: '', trackingSubmodules: false]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "963308e5-d6be-4086-909f-2e94ebaada7f", url: "git@github.com:paulcosma/com-paulcosma.git"]]])
+    }
     stage('DockerHub registry login') {
       withCredentials([usernamePassword(credentialsId: '052cba25-f00d-4ff2-b593-4e143b90515a', usernameVariable: 'dockerhub_user', passwordVariable: 'dockerhub_password')]) {
         sh "docker login -u ${dockerhub_user} -p ${dockerhub_password}"
