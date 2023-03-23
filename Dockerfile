@@ -4,13 +4,13 @@
 # Ensure everyone is running the same version of golang.
 # https://hub.docker.com/_/golang?tab=tags
 # https://github.com/docker-library/golang
-ARG GOLAN_VERSION=1.13.12-buster
-ARG NGINX_VERSION=1.19.0-alpine
+ARG GOLAN_VERSION=1.20.2-bullseye
+ARG NGINX_VERSION=1.23.3-alpine
 FROM golang:${GOLAN_VERSION} as builder
 
 # Install Hugo from source
 # https://github.com/gohugoio/hugo/tags
-ARG HUGO_VERSION=v0.73.0
+ARG HUGO_VERSION=v0.111.3
 RUN apt-get update && apt-get install git
 RUN git version
 WORKDIR /src
