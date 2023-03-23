@@ -34,6 +34,8 @@ hugo new <SECTIONNAME>\<FILENAME>.<FORMAT>
 Start the built-in live server via
 ```bash
 hugo server
+# start hugo on a remote server
+hugo server --bind=10.2.48.1 --baseURL=http://10.2.48.1:1313
 ```
 
 Keep your regular pages in the content folder.<br>
