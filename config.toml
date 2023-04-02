@@ -45,7 +45,6 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
       unsafe = false
       xhtml = false
 
-
 [taxonomies]
   tag = "tags"
   # Categories are disabled by default.
