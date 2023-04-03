@@ -454,11 +454,14 @@ Packages to be installed must be downloaded from [mirror servers](https://archli
 vim /etc/pacman.d/mirrorlist
 # Move the geographically closest mirrors to the top of the list and uncomment them.
 ```
-- Essential packages
+- Essential packages<br>
 Pastrap is the tool that will install tools to the root directory _(install the base package, Linux kernel and firmware for common hardware)_.
 ```bash
 # Install essential packages
 pacstrap /mnt base linux linux-firmware linux-headers linux-lts linux-lts-headers
+# Notice that I've installed two Linux kernel
+# - the latest linux kernel (to have the latest features and upgrade)
+# - linux-lts as fallback (just in case I mess something up).
 ```
 
 > Another option is to Install base packages, change root into the system and install other packages using pacman command.<br>
@@ -785,6 +788,32 @@ menuentry 'Windows 11' {
 # Regenerate the grub config.
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+Change [Grub "Arch Linux"](https://wiki.archlinux.org/title/GRUB/Tips_and_tricks#Changing_the_default_menu_entry) kernel
+```bash
+# Because we installed two kernel (arch latest and arch-lts) the simple "Arch Linux" optiont (not the Advanced) can be updated to point to latest or lts version as you need (default is it takes the lts)
+# find all instelled kernels
+find /boot/vmli*
+# get current kernel
+uname -r
+pacman -Q linux
+# Read thread https://bbs.archlinux.org/viewtopic.php?id=266583
+vi /etc/grub.d/10_linux
+# Change the line
+reverse_sorted_list=$(echo $list | tr ' ' '\n' | sed -e 's/\.old$/ 1/; / 1$/! s/$/ 2/' | version_sort -r | sed -e 's/ 1$/.old/; s/ 2$//')
+# with
+reverse_sorted_list=$(echo $list | tr ' ' '\n' | sed -e 's/\.old$/ 1/; / 1$/! s/$/ 2/' | version_sort -V | sed -e 's/ 1$/.old/; s/ 2$//')
+# Regenerate the grub config.
+rm /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg
+# Verify menuentry from /boot/grub/grub.cfg
+# menuentry 'Arch Linux' {
+# ...
+# initrd  /intel-ucode.img /initramfs-linux.img # or initramfs-linux-lts.img
+#}
+#
+# OR - simply modify the
+vi /boot/grub/grub.cfg
+```
 
 ### Reboot<br>
 ```bash
@@ -847,9 +876,9 @@ pacman -S intel-ucode
 # pacman -S amd-ucode 
 ```
 
-Now I have Arch installed. ＼(＾O＾)／ 
+Congrats ＼(＾O＾)／ now you have say __"I use arch btw"__ 
 
-Hold on, not done yet as I might need a GUI interface, but I'll address that in a separate post.
+You will probably need a GUI interface, but I'll address that in a separate [post]({{< ref "arch-desktop" >}}).
 
 # Debugging
 In case you need to troubleshoot failed install after reboot.
