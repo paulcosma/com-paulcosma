@@ -1,7 +1,7 @@
 ---
 title: "Arch Desktop"
 date: 2023-04-02T21:33:11+03:00
-draft: true
+draft: false
 toc: true
 tableOfContents:
     endLevel: 2
