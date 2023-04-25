@@ -5,7 +5,7 @@
 # https://hub.docker.com/_/golang?tab=tags
 # https://github.com/docker-library/golang
 ARG GOLAN_VERSION=1.20.2-bullseye
-ARG NGINX_VERSION=1.23.3-alpine
+ARG NGINX_VERSION=1.24.0-alpine
 FROM golang:${GOLAN_VERSION} as builder
 
 # Install Hugo from source
