@@ -1,7 +1,7 @@
 #!groovy
 // Scripted pipeline
 
-node("master") {
+node("media") {
   timestamps {
     git branch: 'master',
         url: 'https://github.com/paulcosma/com-paulcosma.git'
