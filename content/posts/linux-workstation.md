@@ -168,8 +168,8 @@ station wlan0  connect "CXP5" # connect to wireless network of choice
 # exit the iwd prompt after some time (ctrl+d)
 ctrl+d
 ip a s
-ping -c 3 8.8.8.8
-ping -c google.com 
+ping -c3 8.8.8.8
+ping -c3 google.com
 
 # another option is to use “wifi-connect”
 ```
@@ -641,7 +641,7 @@ pacman -S grub efibootmgr dosfstools os-prober mtools
 # Create the EFI directory:
 mkdir /boot/EFI
 # Mount the EFI partition:
-mount /dev/<DEVICE PARTITION 1> /boot/EFI
+mount /dev/<DEVICE_PARTITION_1> /boot/EFI
 # Install GRUB:
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 # Create the locale directory for GRUB
@@ -680,8 +680,9 @@ mount /dev/nvme0n1p1 /boot/efi
 # Determine the UUID of your root partition and EFI partition.
 fdisk -l
 blkid
-# nvme0n1p1 = /boot/efi = example UUID="10BC-C49B"
-# nvme0n1p6 = / = example UUID="6e0e2ea6-27e5-4d49-9a87-4503c08124f7"
+# nvme0n1p1 = /boot/efi = example UUID="8028-DFC2"
+# nvme0n1p6 if dual boot on one disk = / = example UUID="6e0e2ea6-27e5-4d49-9a87-4503c08124f7" OR
+# nvme1n1p3 if dual boot on two separate disks = / = example UUID="aacb44ed-54fa-4481-be1a-4a46aabad50f"
 # Those will be referenced in the Grub configuration
 
 # Edit the GRUB boot loader configuration.
@@ -715,7 +716,7 @@ if [ "${grub_platform}" == "efi" ]; then
     insmod fat
     insmod search_fs_uuid
     insmod chain
-    search --fs-uuid --set=root $FS_UUID <change this with the windows EFI partition ID>
+    search --fs-uuid --set=root $FS_UUID #change "$FS_UUID" with the windows EFI partition ID. e.g.: 8028-DFC2
     chainloader /EFI/Microsoft/Boot/bootmgfw.efi
     # chainloader /EFI/VeraCryot/DcsBoot.efi # if you used Veracrypt for windows encryption
   }
@@ -731,7 +732,7 @@ grub-install
 # ---
 # Create the locale directory for GRUB if it does not exist
 ls -alh /boot/grub
-mkdir /boot/grub/locale
+mkdir -p /boot/grub/locale
 # Copy the locale file to locale directory
 cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 # if you want to use another language in grub refer to the documentation for that.
@@ -770,7 +771,9 @@ pacman -S wget unzip freetype2
   unzip /usr/share/grub-fonts/Hack-v3.003-ttf.zip -d /usr/share/grub-fonts/
 }
 grub-mkfont -s 30 -o /boot/grubfont.pf2 /usr/share/grub-fonts/ttf/Hack-Regular.ttf
-# Then add the following in /etc/default/grub.
+
+vi /etc/default/grub
+# Then add the following in /etc/default/grub
 GRUB_FONT="/boot/grubfont.pf2"
 ```
 Remember last selected choice
@@ -798,7 +801,7 @@ uname -r
 pacman -Q linux
 # Read thread https://bbs.archlinux.org/viewtopic.php?id=266583
 vi /etc/grub.d/10_linux
-# Change the line
+# Change the line (# replace -r with -V)
 reverse_sorted_list=$(echo $list | tr ' ' '\n' | sed -e 's/\.old$/ 1/; / 1$/! s/$/ 2/' | version_sort -r | sed -e 's/ 1$/.old/; s/ 2$//')
 # with
 reverse_sorted_list=$(echo $list | tr ' ' '\n' | sed -e 's/\.old$/ 1/; / 1$/! s/$/ 2/' | version_sort -V | sed -e 's/ 1$/.old/; s/ 2$//')
@@ -812,7 +815,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #}
 #
 # OR - simply modify the
-vi /boot/grub/grub.cfg
+# vi /boot/grub/grub.cfg
 ```
 
 ### Reboot<br>
@@ -823,11 +826,14 @@ reboot
 ```
 Go to __Bios__ setting and change __boot order__ to the disk where Arch is installed. (Bios F2 -> Boot -> UEFI NVME Drive BBS Priorities - set Boot Option #1 to __arch__)<br>
 
-If reboot fails follow go to [Debugging](#Debugging)
+If reboot fails follow instructions from [Debugging](#Debugging)
 
 ## Post-installation
 Using grub, login to Arch linux.<br>
 Establish internet connection  with “nmtui-connect” and begin installing packages.<br>
+```bash
+nmtui
+```
 You can connect from another machine to perform post-installation and desktop setup
 ```bash
 # on another machine
@@ -852,26 +858,26 @@ free -m
 - Set timezone
 ```bash
 # timedatectl list-timezones
-timedatectl set-timezone Europe/Bucharest
+sudo timedatectl set-timezone Europe/Bucharest
 # synchronize clock
-systemctl enable systemd-timesyncd
+sudo systemctl enable systemd-timesyncd
 ```
 - Set hostname
 ```bash
-hostnamectl set-hostname softaz
-cat /etc/hostname
+sudo hostnamectl set-hostname softaz
+sudo cat /etc/hostname
 ```
 - Edit /etc/hosts file
 ```bash
-vi /etc/hosts
-
+sudo vi /etc/hosts
+# add the hostname used
 127.0.0.1 localhost
-127.0.1.1 softaz # the hostname used
+127.0.1.1 softaz 
 
 ```
 - Install microcode for CPU depending on cpu you are using
 ```bash
-pacman -S intel-ucode
+sudo pacman -S intel-ucode
 # or 
 # pacman -S amd-ucode 
 ```
@@ -904,15 +910,15 @@ mount /dev/vg00/lv_root /mnt
 # Mount the boot directory to the boot partition.
 mount /dev/nvme1n1p2 /mnt/boot
 # Mount the Window's created EFI partition to /mnt/boot/efi.
-#mount /dev/nvme0n1p1 /mnt/boot/efi
-mount /dev/vg00/lv_home /mnt/home
-lsblk # check
+mount /dev/nvme0n1p1 /mnt/boot/efi
 
 # Create and mount home directory
-mkdir /mnt/home
+mkdir -p /mnt/home
 mount /dev/vg00/lv_home /mnt/home
+
+lsblk # check
 ```
-Get back on the internet with wifi-menu or another tool.
+Get back on the internet with iwctl/nmtui/wifi-menu or another tool.
 Enter the system root via arch-chroot.
 ```bash
 arch-chroot /mnt
