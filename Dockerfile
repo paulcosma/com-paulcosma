@@ -10,7 +10,7 @@ FROM golang:${GOLAN_VERSION} as builder
 
 # Install Hugo from source
 # https://github.com/gohugoio/hugo/tags
-ARG HUGO_VERSION=v0.112.7
+ARG HUGO_VERSION=v0.116.1
 RUN apt-get update && apt-get install git
 RUN git version
 WORKDIR /src
