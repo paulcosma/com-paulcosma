@@ -15,7 +15,7 @@ node("media") {
     }
     stage('DockerHub registry login') {
       withCredentials([usernamePassword(credentialsId: '052cba25-f00d-4ff2-b593-4e143b90515a', usernameVariable: 'dockerhub_user', passwordVariable: 'dockerhub_password')]) {
-        sh "docker login -u ${dockerhub_user} -p ${dockerhub_password}"
+        sh "echo ${dockerhub_password} | docker login -u ${dockerhub_user} --password-stdin"
       }
     }
     stage('Build image') {
