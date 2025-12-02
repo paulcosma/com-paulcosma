@@ -173,10 +173,6 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     url = "https://backup.paulcosma.com"
 
   [[params.personal]]
-    name = "webmail"
-    url = "https://webmail.softaz.com"
-
-  [[params.personal]]
     name = "jenkins"
     url = "https://jenkins.paulcosma.com"
 
